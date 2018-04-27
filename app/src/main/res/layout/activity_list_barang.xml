@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/border"
             android:layout_margin="10dp"
-            android:id="@+id/kat1">
+            android:id="@+id/br1">
 
             <ImageButton
                 android:layout_width="70dp"
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/border"
             android:layout_margin="10dp"
-            android:id="@+id/kat2">
+            android:id="@+id/br2">
 
             <ImageButton
                 android:layout_width="70dp"
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/border"
             android:layout_margin="10dp"
-            android:id="@+id/kat3">
+            android:id="@+id/br3">
 
             <ImageButton
                 android:layout_width="70dp"

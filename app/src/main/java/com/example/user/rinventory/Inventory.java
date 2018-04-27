@@ -6,15 +6,30 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 public class Inventory extends AppCompatActivity {
 
+    ImageButton kat1, kat2, kat3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
         setTitle("Inventori");
+
+        kat1 = findViewById(R.id.kat1);
+        kat2 = findViewById(R.id.kat2);
+        kat3 = findViewById(R.id.kat3);
+
+        kat1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent test= new Intent(getApplicationContext(), ListBarang.class);
+                startActivity(test);
+            }
+        });
     }
 
     @Override
@@ -36,20 +51,20 @@ public class Inventory extends AppCompatActivity {
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.in){
-            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
-        } else if (item.getItemId() == R.id.out) {
-            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
-        } else if (item.getItemId() == R.id.inven) {
-            startActivity(new Intent(getApplicationContext(), Inventory.class));
-        } else if (item.getItemId() == R.id.retur) {
-            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
-        } else if (item.getItemId() == R.id.report) {
-            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
-        }
-
-        return true;
-    }
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        if (item.getItemId()==R.id.in){
+//            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
+//        } else if (item.getItemId() == R.id.out) {
+//            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
+//        } else if (item.getItemId() == R.id.inven) {
+//            startActivity(new Intent(getApplicationContext(), Inventory.class));
+//        } else if (item.getItemId() == R.id.retur) {
+//            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
+//        } else if (item.getItemId() == R.id.report) {
+//            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
+//        }
+//
+//        return true;
+//    }
 
 }
