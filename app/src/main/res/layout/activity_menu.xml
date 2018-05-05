@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.user.rinventory.menuActivity"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:weightSum="2">
 
@@ -64,13 +65,13 @@
                 android:layout_weight="1">
 
                 <ImageButton
+                    android:id="@+id/btnOut"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:background="@null"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/out"
-                    android:id="@+id/imageButton" />
+                    android:src="@drawable/out" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

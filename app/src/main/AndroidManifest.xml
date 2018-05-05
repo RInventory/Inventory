@@ -20,6 +20,8 @@
         <activity android:name=".ListBarang" />
         <activity android:name=".detailbarang" />
         <activity android:name=".menuActivity" />
+        <activity android:name=".INActivity" />
+        <activity android:name=".OutActivity"></activity>
     </application>
 
 </manifest>
