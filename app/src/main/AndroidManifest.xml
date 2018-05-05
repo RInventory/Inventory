@@ -16,12 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Inventory" />
-        <activity android:name=".ListBarang" />
-        <activity android:name=".detailbarang" />
+        <activity android:name=".Inventory"
+            android:label="Inventory"/>
+        <activity android:name=".ListBarang"
+            android:label="List Barang"/>
+        <activity android:name=".detailbarang"
+            android:label="Detail Barang"/>
         <activity android:name=".menuActivity" />
-        <activity android:name=".INActivity" />
-        <activity android:name=".OutActivity"></activity>
+        <activity android:name=".INActivity"
+            android:label="IN"/>
+        <activity android:name=".OutActivity"
+            android:label="OUT"/>
     </application>
 
 </manifest>

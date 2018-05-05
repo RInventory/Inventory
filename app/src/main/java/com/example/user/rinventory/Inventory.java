@@ -17,7 +17,7 @@ public class Inventory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
 
-        setTitle("Inventori");
+        setTitle("Inventory");
 
         kat1 = findViewById(R.id.kat1);
         kat2 = findViewById(R.id.kat2);
