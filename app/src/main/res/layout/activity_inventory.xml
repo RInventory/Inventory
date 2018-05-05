@@ -52,15 +52,15 @@
             android:scaleType="centerCrop"/>
 
         <TextView
+            android:id="@+id/ktg2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kategori 2"
-            android:layout_toRightOf="@+id/logo2"
             android:layout_centerVertical="true"
-            android:textSize="25dp"
             android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/logo2"
+            android:text="Kategori 2"
             android:textColor="#000"
-            android:id="@+id/ktg1"/>
+            android:textSize="25dp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -78,15 +78,15 @@
             android:scaleType="centerCrop"/>
 
         <TextView
+            android:id="@+id/ktg3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kategori 3"
-            android:layout_toRightOf="@+id/logo3"
             android:layout_centerVertical="true"
-            android:textSize="25dp"
             android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/logo3"
+            android:text="Kategori 3"
             android:textColor="#000"
-            android:id="@+id/ktg1"/>
+            android:textSize="25dp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -104,15 +104,15 @@
             android:scaleType="centerCrop"/>
 
         <TextView
+            android:id="@+id/ktg4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kategori 4"
-            android:layout_toRightOf="@+id/logo4"
             android:layout_centerVertical="true"
-            android:textSize="25dp"
             android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/logo4"
+            android:text="Kategori 4"
             android:textColor="#000"
-            android:id="@+id/ktg1"/>
+            android:textSize="25dp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -131,15 +131,15 @@
             android:scaleType="centerCrop"/>
 
         <TextView
+            android:id="@+id/ktg5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kategori 5"
-            android:layout_toRightOf="@+id/logo5"
             android:layout_centerVertical="true"
-            android:textSize="25dp"
             android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/logo5"
+            android:text="Kategori 5"
             android:textColor="#000"
-            android:id="@+id/ktg1"/>
+            android:textSize="25dp" />
     </RelativeLayout>
 
 </LinearLayout>

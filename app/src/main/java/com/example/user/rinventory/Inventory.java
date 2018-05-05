@@ -7,11 +7,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 public class Inventory extends AppCompatActivity {
 
-    ImageButton kat1, kat2, kat3;
+    RelativeLayout kat1, kat2, kat3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
