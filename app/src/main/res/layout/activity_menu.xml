@@ -183,7 +183,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="10dp"
-                    android:text="Exit"
+                    android:text="Logout"
                     android:textStyle="bold"/>
 
             </RelativeLayout>

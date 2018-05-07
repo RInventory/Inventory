@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">RInventory</string>
+    <string-array name="android_dropdown_arrays">
+        <item>Pilih Item</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+    </string-array>
+    <string-array name="Retur">
+        <item>Pilih Item</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+    </string-array>
 </resources>

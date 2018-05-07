@@ -39,21 +39,38 @@ public class menuActivity extends AppCompatActivity {
         btnOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent iOut = new Intent(getApplicationContext(),INActivity.class);
+                Intent iOut = new Intent(getApplicationContext(),OutActivity.class);
                 startActivity(iOut);
             }
         });
 
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+        ImageButton btnReport = (ImageButton) findViewById(R.id.btnReport);
+        btnReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent iReport = new Intent(getApplicationContext(),reportActivity.class);
+                startActivity(iReport);
+            }
+        });
+        ImageButton btnRetur = (ImageButton) findViewById(R.id.btnRetur);
+        btnRetur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent iRetur = new Intent(getApplicationContext(),returActivity.class);
+                startActivity(iRetur);
+            }
+        });
+        ImageButton btnExit = (ImageButton) findViewById(R.id.btnExit);
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent iExit = new Intent(getApplicationContext(),loginActivity.class);
+                startActivity(iExit);
+            }
+        });
 
-        if (id == android.R.id.home){
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,20 +81,20 @@ public class menuActivity extends AppCompatActivity {
         return true;
     }
 
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        if (item.getItemId()==R.id.in){
-//            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
-//        } else if (item.getItemId() == R.id.out) {
-//            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
-//        } else if (item.getItemId() == R.id.inven) {
-//            startActivity(new Intent(getApplicationContext(), Inventory.class));
-//        } else if (item.getItemId() == R.id.retur) {
-//            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
-//        } else if (item.getItemId() == R.id.report) {
-//            startActivity(new Intent(getApplicationContext(), HelpActivity.class));
-//        }
-//
-//        return true;
-//    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.in){
+            startActivity(new Intent(getApplicationContext(), INActivity.class));
+        } else if (item.getItemId() == R.id.out) {
+            startActivity(new Intent(getApplicationContext(), OutActivity.class));
+        } else if (item.getItemId() == R.id.inven) {
+            startActivity(new Intent(getApplicationContext(), Inventory.class));
+        } else if (item.getItemId() == R.id.retur) {
+            startActivity(new Intent(getApplicationContext(), returActivity.class));
+        } else if (item.getItemId() == R.id.report) {
+            startActivity(new Intent(getApplicationContext(), reportActivity.class));
+        }
+
+        return true;
+    }
 
 }

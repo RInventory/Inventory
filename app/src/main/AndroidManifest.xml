@@ -16,17 +16,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Inventory"
-            android:label="Inventory"/>
-        <activity android:name=".ListBarang"
-            android:label="List Barang"/>
-        <activity android:name=".detailbarang"
-            android:label="Detail Barang"/>
+        <activity
+            android:name=".Inventory"
+            android:label="Inventory" />
+        <activity
+            android:name=".OutActivity"
+            android:label="OUT" />
+        <activity
+            android:name=".ListBarang"
+            android:label="List Barang" />
+        <activity
+            android:name=".detailbarang"
+            android:label="Detail Barang" />
         <activity android:name=".menuActivity" />
-        <activity android:name=".INActivity"
-            android:label="IN"/>
-        <activity android:name=".OutActivity"
-            android:label="OUT"/>
+        <activity
+            android:name=".INActivity"
+            android:label="IN" />
+        <activity
+            android:name=".loginActivity"
+            android:label="Login" />
+        <activity
+            android:name=".reportActivity"
+            android:label="Report" />
+        <activity
+            android:name=".returActivity"
+            android:label="Retur" />
+        <activity android:name=".report2Activity"
+            android:label="Report"/>
     </application>
 
 </manifest>
