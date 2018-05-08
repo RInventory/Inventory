@@ -9,18 +9,18 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="158dp"
-        android:layout_height="152dp"
+        android:layout_width="178dp"
+        android:layout_height="179dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="68dp"
         android:background="@null"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo_inventory" />
 
     <EditText
         android:id="@+id/editText"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
