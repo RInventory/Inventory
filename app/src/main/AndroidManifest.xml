@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".splashScreen"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,31 +24,43 @@
         </activity>
         <activity
             android:name=".Inventory"
-            android:label="Inventory" />
+            android:label="Inventory"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".OutActivity"
-            android:label="OUT" />
+            android:label="OUT"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ListBarang"
-            android:label="List Barang" />
+            android:label="List Barang"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".detailbarang"
-            android:label="Detail Barang" />
-        <activity android:name=".menuActivity" />
+            android:label="Detail Barang"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".menuActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".INActivity"
-            android:label="IN" />
+            android:label="IN"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".loginActivity"
-            android:label="Login" />
+            android:label="Login"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".reportActivity"
-            android:label="Report" />
+            android:label="Report"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".returActivity"
-            android:label="Retur" />
-        <activity android:name=".report2Activity"
-            android:label="Report"/>
+            android:label="Retur"
+            android:screenOrientation="portrait"/>
+        <activity 
+            android:name=".report2Activity"
+            android:label="Report"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
