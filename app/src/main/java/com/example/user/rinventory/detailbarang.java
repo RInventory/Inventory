@@ -25,7 +25,9 @@ public class detailbarang extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.home){
-            startActivity(new Intent(getApplicationContext(), menuActivity.class));
+            Intent iHome = new Intent(getApplicationContext(),menuActivity.class);
+            finish();
+            startActivity(iHome);
         } else if (item.getItemId() == R.id.in) {
             startActivity(new Intent(getApplicationContext(), INActivity.class));
         } else if (item.getItemId() == R.id.out) {

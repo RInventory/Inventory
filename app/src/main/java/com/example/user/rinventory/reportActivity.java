@@ -65,7 +65,9 @@ public class reportActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.home){
-            startActivity(new Intent(getApplicationContext(), menuActivity.class));
+            Intent iHome = new Intent(getApplicationContext(),menuActivity.class);
+            finish();
+            startActivity(iHome);
         } else if (item.getItemId() == R.id.in) {
             startActivity(new Intent(getApplicationContext(), INActivity.class));
         } else if (item.getItemId() == R.id.out) {
@@ -74,10 +76,7 @@ public class reportActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), Inventory.class));
         } else if (item.getItemId() == R.id.retur) {
             startActivity(new Intent(getApplicationContext(), returActivity.class));
-        } else if (item.getItemId() == R.id.report) {
-            startActivity(new Intent(getApplicationContext(), reportActivity.class));
         }
-
         return true;
     }
 }

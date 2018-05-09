@@ -8,8 +8,8 @@
     </string-array>
     <string-array name="Retur">
         <item>Pilih Item</item>
-        <item>January</item>
-        <item>February</item>
-        <item>March</item>
+        <item>00001</item>
+        <item>00002</item>
+        <item>00003</item>
     </string-array>
 </resources>

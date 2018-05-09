@@ -66,9 +66,9 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.home){
-            startActivity(new Intent(getApplicationContext(), menuActivity.class));
-        } else if (item.getItemId() == R.id.in) {
-            startActivity(new Intent(getApplicationContext(), INActivity.class));
+            Intent iHome = new Intent(getApplicationContext(),menuActivity.class);
+            finish();
+            startActivity(iHome);
         } else if (item.getItemId() == R.id.out) {
             startActivity(new Intent(getApplicationContext(), OutActivity.class));
         } else if (item.getItemId() == R.id.inven) {
