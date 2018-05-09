@@ -155,7 +155,7 @@ public class menuActivity extends AppCompatActivity {
                 this);
 
         // set title dialog
-        alertDialogBuilder.setTitle("Apakah Anda yakin Ingin Logout?");
+        alertDialogBuilder.setTitle("Apakah anda yakin ingin logout?");
 
         // set pesan dari dialog
         alertDialogBuilder
