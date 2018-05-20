@@ -13,16 +13,27 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class menuActivity extends AppCompatActivity {
+    SharedPreferences sharedpreferences;
+    TextView user;
+    public static final String my_shared_preferences = "my_shared_preferences";
+    public final static String TAG_USERNAME = "username";
     ConnectivityManager conMgr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
+        final String username = sharedpreferences.getString(TAG_USERNAME, null);
+        user = (TextView) findViewById(R.id.user);
+        user.setText("hi "+username+"!");
+
 
         conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         {

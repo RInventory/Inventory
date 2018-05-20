@@ -32,7 +32,7 @@ import java.util.Map;
 public class loginActivity extends AppCompatActivity {
 
     ProgressDialog pDialog;
-    Button btn_register, btn_login;
+    Button btn_login;
     EditText txt_username, txt_password;
     Intent intent;
 
