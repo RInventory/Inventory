@@ -58,7 +58,7 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "pesan";
 
-    private static final String TAG = OutActivity.class.getSimpleName();
+    private static final String TAG = INActivity.class.getSimpleName();
     public final static String TAG_NAMA = "nama_barang";
 
     String tag_json_obj = "json_obj_req";
