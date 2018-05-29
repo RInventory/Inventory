@@ -5,5 +5,5 @@ package com.example.user.rinventory;
  */
 
 public class Server {
-    public static final String URL = "http://rinventory.online/";
+    public static final String URL = "http://rinventory.online/Android";
 }

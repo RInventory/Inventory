@@ -53,8 +53,8 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
     public final static String TAG_KATEGORI = "nama_kategori";
     public final static String TAG_GAMBAR = "gambar_barang";
     public final static String TAG_USERNAME = "username";
-    String url = "http://rinventory.online/tambahdata.php";
-    String url2 = "http://rinventory.online/tampil.php";
+    String url = "http://rinventory.online/Android/tambahdata.php";
+    String url2 = "http://rinventory.online/Android/tampil.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "pesan";
 

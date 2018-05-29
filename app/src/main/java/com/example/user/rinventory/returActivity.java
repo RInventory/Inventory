@@ -44,8 +44,8 @@ public class returActivity extends AppCompatActivity implements View.OnClickList
     public final static String TAG_LOKASI = "tmp_simpanbarang";
     public final static String TAG_KATEGORI = "nama_kategori";
     public final static String TAG_USERNAME = "username";
-    String url = "http://rinventory.online/returData.php";
-    String url2 = "http://rinventory.online/tampil.php";
+    String url = "http://rinventory.online/Android/returData.php";
+    String url2 = "http://rinventory.online/Android/tampil.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "pesan";
 
