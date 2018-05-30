@@ -7,6 +7,17 @@
     android:background="@drawable/background"
     tools:context="com.example.user.rinventory.INActivity">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+
     <EditText
         android:id="@+id/editText2"
         android:layout_width="274dp"
@@ -224,5 +235,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.419" />
+
+        </LinearLayout>
+</ScrollView>
 
 </android.support.constraint.ConstraintLayout>
