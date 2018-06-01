@@ -40,10 +40,8 @@ public class returActivity extends AppCompatActivity implements View.OnClickList
     int success;
     ConnectivityManager conMgr;
     SharedPreferences sharedpreferences;
-    public static final String my_shared_preferences = "my_shared_preferences";
     public final static String TAG_LOKASI = "tmp_simpanbarang";
     public final static String TAG_KATEGORI = "nama_kategori";
-    public final static String TAG_USERNAME = "username";
     String url = "http://rinventory.online/Android/returData.php";
     String url2 = "http://rinventory.online/Android/tampil.php";
     private static final String TAG_SUCCESS = "success";
@@ -55,7 +53,6 @@ public class returActivity extends AppCompatActivity implements View.OnClickList
     String tag_json_obj = "json_obj_req";
 
     public static final String KEY_ID = "id_barang";
-    public static final String KEY_USERNAME = "username";
     public static final String KEY_STOK = "stok_retur";
     public final static String KEY_KETERANGAN = "keterangan_retur";
 
@@ -80,7 +77,7 @@ public class returActivity extends AppCompatActivity implements View.OnClickList
 
 
         //---------------------get username dari shared preference-------------------------
-        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences("shared", Context.MODE_PRIVATE);
 
         //-------------------memangil id dari layout----------------------
         buttonScan = (Button) findViewById(R.id.buttonScan);
@@ -225,7 +222,8 @@ public class returActivity extends AppCompatActivity implements View.OnClickList
         final String id_barang = editText.getText().toString().trim();
         final String stok_retur = stokText.getText().toString().trim();
         final String keterangan_retur = keteranganText.getText().toString().trim();
-        final String username = sharedpreferences.getString(TAG_USERNAME, null); //get nilai shared preference
+        sharedpreferences = getSharedPreferences("shared", Context.MODE_PRIVATE);
+        final String email = sharedpreferences.getString("email", null); //get nilai shared preference
 
         StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -263,7 +261,7 @@ public class returActivity extends AppCompatActivity implements View.OnClickList
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
                 params.put(KEY_ID,id_barang);
-                params.put(KEY_USERNAME,username);
+                params.put("email",email);
                 params.put(KEY_STOK,stok_retur);
                 params.put(KEY_KETERANGAN,keterangan_retur);
                 return params;
