@@ -1,107 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context="com.example.user.rinventory.detailbarang">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="10dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtdetail"
-            android:layout_below="@+id/logo"
-            android:text="Detail Barang"
-            android:textSize="30sp"
-            android:textColor="#000"
-            android:fontFamily="serif"
-            android:gravity="center"
-            android:layout_margin="5dp"/>
+            android:orientation="vertical" >
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#3f51b5">
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_margin="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    app:srcCompat="@drawable/broke" />
+            </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kode Barang : "
-            android:layout_margin="5dp"
-            android:textColor="#000"
-            android:textAppearance="?android:textAppearanceMedium"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="20dp"
+                android:paddingTop="3dp"
+                android:text="*kode"
+                android:textColor="@color/colorPrimary"
+                android:textSize="10dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/edtkode"
-            android:background="@drawable/border"/>
+            <TextView
+                android:id="@+id/kodeBarang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:text="KODE BARANG"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="20dp"
+                android:textSize="10dp"
+                android:paddingTop="3dp"
+                android:background="#b5bebf"
+                android:textColor="@color/colorPrimary"
+                android:text="*nama barang"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kode Barang : "
-            android:textColor="#000"
-            android:layout_margin="5dp"
-            android:textAppearance="?android:textAppearanceMedium"/>
+            <TextView
+                android:id="@+id/namaBarang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:background="#b5bebf"
+                android:text="NAMA BARANG"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="20dp"
+                android:textSize="10dp"
+                android:paddingTop="3dp"
+                android:textColor="@color/colorPrimary"
+                android:text="*stok barang"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/edtnama"
-            android:background="@drawable/border"/>
+            <TextView
+                android:id="@+id/stokBarang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:text="STOK BARANG"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="20dp"
+                android:textSize="10dp"
+                android:background="#b5bebf"
+                android:paddingTop="3dp"
+                android:textColor="@color/colorPrimary"
+                android:text="*lokasi penyimpanan"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Harga Barang : "
-            android:textColor="#000"
-            android:layout_margin="5dp"
-            android:textAppearance="?android:textAppearanceMedium"/>
+            <TextView
+                android:id="@+id/lokBarang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:background="#b5bebf"
+                android:text="LOKASI BARANG"
+                android:textSize="20dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="20dp"
+                android:textSize="10dp"
+                android:paddingTop="3dp"
+                android:textColor="@color/colorPrimary"
+                android:text="*kategori barang"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/edtharga"
-            android:background="@drawable/border"/>
+            <TextView
+                android:id="@+id/katBarang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:text="KATEGORI BARANG"
+                android:textSize="20dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lokasi Barang : "
-            android:textColor="#000"
-            android:layout_margin="5dp"
-            android:textAppearance="?android:textAppearanceMedium"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/edtlokasi"
-            android:background="@drawable/border"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stok Barang : "
-            android:textColor="#000"
-            android:layout_margin="5dp"
-            android:textAppearance="?android:textAppearanceMedium"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/edtstok1"
-            android:background="@drawable/border"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:id="@+id/back"
-            android:text="Back"
-            android:layout_margin="10dp"/>
-
-    </LinearLayout>
-
-</ScrollView>
+        </LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -49,6 +49,7 @@ public class ListBarang extends AppCompatActivity implements AdapterView.OnItemC
     public static final String TAG_STOK_BARANG = "stok_barang";
     public static final String TAG_GAMBAR_BARANG = "gambar_barang";
     public static final String URL_GET_ALL = "http://rinventory.online/Android/select2.php";
+    String tag_json_obj = "json_obj_req";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,17 +106,17 @@ public class ListBarang extends AppCompatActivity implements AdapterView.OnItemC
 
                     for (int i = 0; i < result.length(); i++) {
                         JSONObject jo = result.getJSONObject(i);
-//                String id_barang = jo.getString(TAG_ID_BARANG);
                         String nama_barang = jo.getString(TAG_NAMA_BARANG);
+                        String id_barang = jo.getString(TAG_ID_BARANG);
 //                        String id_kategori = jo.getString(TAG_ID_KATEGORI);
-//                String stok_barang = jo.getString(TAG_STOK_BARANG);
+                        String stok_barang = "Total stok : "+jo.getString(TAG_STOK_BARANG);
                         gambar = Server.URL + jo.getString(TAG_GAMBAR_BARANG);
 
                         HashMap<String, String> employees = new HashMap<>();
-//                employees.put(TAG_ID_BARANG, id_barang);
-//                        employees.put(TAG_ID_KATEGORI, id_kategori);
                         employees.put(TAG_NAMA_BARANG, nama_barang);
-//                employees.put(TAG_STOK_BARANG, stok_barang);
+                        employees.put(TAG_ID_BARANG, id_barang);
+//                        employees.put(TAG_ID_KATEGORI, id_kategori);
+                        employees.put(TAG_STOK_BARANG, stok_barang);
                         employees.put(TAG_GAMBAR_BARANG, gambar);
                         list.add(employees);
 
@@ -127,9 +128,9 @@ public class ListBarang extends AppCompatActivity implements AdapterView.OnItemC
 
 
                 ListAdapter adapter = new MyAdapter(
-                        ListBarang.this, list, R.layout.list_row,
-                        new String[]{TAG_NAMA_BARANG, TAG_GAMBAR_BARANG},
-                        new int[]{R.id.textView, R.id.icon});
+                        ListBarang.this, list, R.layout.list_row2,
+                        new String[]{TAG_NAMA_BARANG, TAG_STOK_BARANG, TAG_GAMBAR_BARANG},
+                        new int[]{R.id.textView, R.id.textView2, R.id.icon});
 
 
                 listView.setAdapter(adapter);
@@ -146,12 +147,12 @@ public class ListBarang extends AppCompatActivity implements AdapterView.OnItemC
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
-                params.put("id_kategori",id_kategori);
+                params.put(TAG_ID_KATEGORI,id_kategori);
                 return params;
             }
 
         };
-        AppController.getInstance().addToRequestQueue(strReq, "json_obj_req");
+        AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
 
     }
 
@@ -187,13 +188,10 @@ public class ListBarang extends AppCompatActivity implements AdapterView.OnItemC
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, ListBarang.class);
+        Intent intent = new Intent(this, detailbarang.class);
         HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
         String id_barang = map.get(TAG_ID_BARANG).toString();
-        String nama_barang = map.get(TAG_NAMA_BARANG).toString();
-        Intent iDetail = new Intent(getApplicationContext(),detailbarang.class);
-        iDetail.putExtra(TAG_ID_BARANG,id_barang);
-        iDetail.putExtra(TAG_NAMA_BARANG,nama_barang);
+        intent.putExtra(TAG_ID_BARANG,id_barang);
         startActivity(intent);
     }
 
