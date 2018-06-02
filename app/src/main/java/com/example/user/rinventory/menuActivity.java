@@ -20,8 +20,6 @@ import android.widget.Toast;
 public class menuActivity extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     TextView user;
-    public static final String my_shared_preferences = "my_shared_preferences";
-    public final static String TAG_USERNAME = "username";
     ConnectivityManager conMgr;
 
     @Override
@@ -29,8 +27,8 @@ public class menuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
-        final String username = sharedpreferences.getString(TAG_USERNAME, null);
+        sharedpreferences = getSharedPreferences("shared", Context.MODE_PRIVATE);
+        final String username = sharedpreferences.getString("email", null);
         user = (TextView) findViewById(R.id.user);
         user.setText("hi "+username+"!");
 
@@ -174,7 +172,7 @@ public class menuActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
-                        SharedPreferences sharedpreferences = getSharedPreferences(loginActivity.my_shared_preferences, Context.MODE_PRIVATE);
+                        SharedPreferences sharedpreferences = getSharedPreferences("shared", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedpreferences.edit();
                         editor.clear();
                         editor.commit();

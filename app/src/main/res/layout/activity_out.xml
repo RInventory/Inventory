@@ -4,18 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context="com.example.user.rinventory.OutActivity">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
 
     <EditText
         android:id="@+id/editText2"
@@ -165,7 +154,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.931"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/broke" />
 
     <Button
         android:id="@+id/button3"
@@ -176,7 +165,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#CD5C5C"
-        android:text="O"
+        android:text="Out"
         android:textColor="#fff"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -234,8 +223,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.547" />
-        </LinearLayout>
-    </ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

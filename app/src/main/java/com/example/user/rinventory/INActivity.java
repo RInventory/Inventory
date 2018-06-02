@@ -48,11 +48,9 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
     int success;
     ConnectivityManager conMgr;
     SharedPreferences sharedpreferences;
-    public static final String my_shared_preferences = "my_shared_preferences";
     public final static String TAG_LOKASI = "tmp_simpanbarang";
     public final static String TAG_KATEGORI = "nama_kategori";
     public final static String TAG_GAMBAR = "gambar_barang";
-    public final static String TAG_USERNAME = "username";
     String url = "http://rinventory.online/Android/tambahdata.php";
     String url2 = "http://rinventory.online/Android/tampil.php";
     private static final String TAG_SUCCESS = "success";
@@ -64,7 +62,6 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
     String tag_json_obj = "json_obj_req";
 
     public static final String KEY_ID = "id_barang";
-    public static final String KEY_USERNAME = "username";
     public static final String KEY_STOK = "stok_masuk";
 
     private IntentIntegrator intentIntegrator;
@@ -88,7 +85,7 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
 
 
         //---------------------get username dari shared preference-------------------------
-        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences("shared", Context.MODE_PRIVATE);
 
         //-------------------memangil id dari layout----------------------
         buttonScan = (Button) findViewById(R.id.buttonScan);
@@ -141,7 +138,7 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
             if (conMgr.getActiveNetworkInfo() != null
                     && conMgr.getActiveNetworkInfo().isAvailable()
                     && conMgr.getActiveNetworkInfo().isConnected()) {
-                confirmOutData();
+                confirmINData();
             } else {
                 Toast.makeText(getApplicationContext() ,"No Internet Connection", Toast.LENGTH_LONG).show();
             }
@@ -197,7 +194,7 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
                     namaText.setText(jObj.getString(TAG_NAMA));
                     lokText.setText(jObj.getString(TAG_LOKASI));
                     katText.setText(jObj.getString(TAG_KATEGORI));
-                    new DownLoadImageTask(gambar).execute(jObj.getString(TAG_GAMBAR));
+                    new DownLoadImageTask(gambar).execute(Server.URL+jObj.getString(TAG_GAMBAR));
 
                 } catch (JSONException e) {
                     // JSON error
@@ -235,7 +232,8 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
 
         final String id_barang = editText.getText().toString().trim();
         final String stok_masuk = stokText.getText().toString().trim();
-        final String username = sharedpreferences.getString(TAG_USERNAME, null); //get nilai shared preference
+        sharedpreferences = getSharedPreferences("shared", Context.MODE_PRIVATE);
+        final String email = sharedpreferences.getString("email", null); //get nilai shared preference
 
         StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -273,7 +271,7 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
                 params.put(KEY_ID,id_barang);
-                params.put(KEY_USERNAME,username);
+                params.put("email",email);
                 params.put(KEY_STOK,stok_masuk);
                 return params;
             }
@@ -286,7 +284,7 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
 
     }
     //------------------Alert IN data-------------------------
-    private void confirmOutData(){
+    private void confirmINData(){
         final String stok_masuk = stokText.getText().toString().trim();
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Apakah anda yakin ingin memasukkan jumlah stok = " + stok_masuk +"?");
