@@ -2,17 +2,26 @@ package com.example.user.rinventory;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.user.rinventory.adapter.Adapter;
+import com.example.user.rinventory.app.AppController;
+import com.example.user.rinventory.data.Data;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,22 +29,62 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-public class reportActivity extends AppCompatActivity {
 
-    public static final String URL_GET_ALL = "http://rinventory.online/Android/select.php";
+public class reportActivity extends AppCompatActivity implements View.OnClickListener{
+
+    TextView txt_hasil;
+    private Button go;
+    String a,b,c;
+    String a1,a2;
+    Spinner spinner_pendidikan,spNamen,tipe;
+    ProgressDialog pDialog;
+    Adapter adapter;
+    List<Data> listPendidikan = new ArrayList<Data>();
+
+    public static final String url = "http://rinventory.online/Android/kategori.php";
     public static final String TAG_ID_KATEGORI = "id_kategori";
-    public static final String TAG_NAMA_KATEGORI = "nama_kategori";
-    public static final String TAG_JSON_ARRAY = "result";
-    private Spinner spinner;
-    private String JSON_STRING;
+
+    private static final String TAG = reportActivity.class.getSimpleName();
+
+    public static final String TAG_ID = "id_kategori";
+    public static final String TAG_BULAN = "tgl_masuk";
+    public static final String TAG_TIPE = "tipe";
+    public static final String TAG_PENDIDIKAN = "nama_kategori";
+    String tag_json_obj = "json_obj_req";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
 
-        spinner = (Spinner) findViewById(R.id.spinner);
+        spinner_pendidikan = (Spinner) findViewById(R.id.spinner_pendidikan);
+        spNamen = (Spinner) findViewById(R.id.spinner);
+        tipe = (Spinner) findViewById(R.id.spinner2);
+        go = (Button) findViewById(R.id.go);
+
+        spinner_pendidikan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // TODO Auto-generated method stub
+                b = listPendidikan.get(position).getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+        adapter = new Adapter(reportActivity.this, listPendidikan);
+        spinner_pendidikan.setAdapter(adapter);
+        go.setOnClickListener(this);
+
+        callData();
+
     }
 
 
@@ -64,74 +113,102 @@ public class reportActivity extends AppCompatActivity {
         }
         return true;
     }
-    private void showEmployee() {
-        JSONObject jsonObject = null;
-        ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
-        try {
-            jsonObject = new JSONObject(JSON_STRING);
-            JSONArray result = jsonObject.getJSONArray(TAG_JSON_ARRAY);
+    private void callData() {
+        listPendidikan.clear();
 
-            for (int i = 0; i < result.length(); i++) {
-                JSONObject jo = result.getJSONObject(i);
-//                String id_kategori = jo.getString(TAG_ID_KATEGORI);
-                String nama_kategori = jo.getString(TAG_NAMA_KATEGORI);
-//                gambar = jo.getString(TAG_GAMBAR_KATEGORI);
+        pDialog = new ProgressDialog(reportActivity.this);
+        pDialog.setCancelable(false);
+        pDialog.setMessage("Loading...");
+        showDialog();
 
-                HashMap<String, String> employees = new HashMap<>();
-//                employees.put(TAG_ID_KATEGORI, id_kategori);
-                employees.put(TAG_NAMA_KATEGORI, nama_kategori);
-//                employees.put(TAG_GAMBAR_KATEGORI, gambar);
-                list.add(employees);
+        // Creating volley request obj
+        JsonArrayRequest jArr = new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.e(TAG, response.toString());
 
+                        // Parsing json
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject obj = response.getJSONObject(i);
+
+                                Data item = new Data();
+
+                                item.setId(obj.getString(TAG_ID));
+                                item.setPendidikan(obj.getString(TAG_PENDIDIKAN));
+
+                                listPendidikan.add(item);
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        // notifying list adapter about data changes
+                        // so that it renders the list view with updated data
+                        adapter.notifyDataSetChanged();
+
+                        hideDialog();
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e(TAG, "Error: " + error.getMessage());
+                Toast.makeText(reportActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                hideDialog();
             }
+        });
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(this,
-                android.R.layout.simple_spinner_dropdown_item,
-                list);
-        spinner.setAdapter(spinnerArrayAdapter);
-//        ListAdapter adapter = new MyAdapter(
-//                MainActivity.this, list, R.layout.list_row,
-//                new String[]{TAG_NAMA_KATEGORI,TAG_GAMBAR_KATEGORI},
-//                new int[]{R.id.textView, R.id.icon});
-//
-//
-//        listView.setAdapter(adapter);
-
-
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jArr, tag_json_obj);
     }
 
-    private void getJSON() {
-        class GetJSON extends AsyncTask<Void, Void, String> {
-
-            ProgressDialog loading;
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                loading = ProgressDialog.show(reportActivity.this, "Mengambil Data", "Mohon Tunggu...", false, false);
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                loading.dismiss();
-                JSON_STRING = s;
-                showEmployee();
-            }
-
-            @Override
-            protected String doInBackground(Void... params) {
-                RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequest(URL_GET_ALL);
-                return s;
-            }
-        }
-        GetJSON gj = new GetJSON();
-        gj.execute();
+    private void showDialog() {
+        if (!pDialog.isShowing())
+            pDialog.show();
     }
 
+    private void hideDialog() {
+        if (pDialog.isShowing())
+            pDialog.dismiss();
+    }
+
+    @Override
+    public void onClick(View view) {
+        a = spNamen.getSelectedItem().toString();
+        if (a.equals("Januari")){
+            a1="01";
+        }else if (a.equals("February")){
+            a1="02";
+        }else if (a.equals("Maret")){
+            a1="03";
+        }else if (a.equals("April")){
+            a1="04";
+        }else if (a.equals("Mei")){
+            a1="05";
+        }else if (a.equals("Juni")){
+            a1="06";
+        }else if (a.equals("Juli")){
+            a1="07";
+        }else if (a.equals("Agustus")){
+            a1="08";
+        }else if (a.equals("September")){
+            a1="09";
+        }else if (a.equals("Oktober")){
+            a1="10";
+        }else if (a.equals("November")){
+            a1="11";
+        }else if (a.equals("Desember")){
+            a1="12";
+        }
+        c = tipe.getSelectedItem().toString();
+        Intent intent = new Intent(this, report2Activity.class);
+        intent.putExtra(TAG_BULAN,a1);
+        intent.putExtra(TAG_ID,b);
+        intent.putExtra(TAG_TIPE,c);
+        startActivity(intent);
+    }
 }

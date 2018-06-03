@@ -1,24 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
     tools:context="com.example.user.rinventory.reportActivity">
 
-    <ScrollView
+    <TextView
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:background="#b5bebf"
+        android:text="Tipe"
+        android:textSize="20dp" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="match_parent"
+        android:entries="@array/tipe"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pilih Bulan"
+        android:textSize="20dp"
+        android:background="#b5bebf"/>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:entries="@array/bulan"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pilih Kategori :"
+        android:background="#b5bebf"
+        android:textSize="20dp" />
+
+    <Spinner
+        android:id="@+id/spinner_pendidikan"
+        android:layout_width="match_parent"
+        android:layout_height="54dp" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/go"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="18dp"
+            android:background="#3f51b5"
+            android:textColor="#FFFFFF"
+            android:text="Search" />
+    </RelativeLayout>
 
-        </LinearLayout>
-    </ScrollView>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
