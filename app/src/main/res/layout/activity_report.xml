@@ -11,6 +11,7 @@
         android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:background="#b5bebf"
+        android:paddingLeft="20dp"
         android:text="Tipe"
         android:textSize="20dp" />
 
@@ -24,6 +25,7 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
         android:text="Pilih Bulan"
         android:textSize="20dp"
         android:background="#b5bebf"/>
@@ -39,6 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Pilih Kategori :"
+        android:paddingLeft="20dp"
         android:background="#b5bebf"
         android:textSize="20dp" />
 
