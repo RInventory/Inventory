@@ -5,11 +5,10 @@
 
     <TextView
         android:id="@+id/pendidikan"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:text="Pendidikan"
-        android:layout_margin="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Pendidikan"
+        android:textSize="18sp" />
 
 </LinearLayout>

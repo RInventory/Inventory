@@ -29,8 +29,7 @@ public class menuActivity extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences("shared", Context.MODE_PRIVATE);
         final String username = sharedpreferences.getString("email", null);
-        user = (TextView) findViewById(R.id.user);
-        user.setText("hi "+username+"!");
+        setTitle("hi, "+username+"!");
 
 
         conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

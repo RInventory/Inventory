@@ -14,32 +14,48 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.example.user.rinventory.adapter.Adapter;
 import com.example.user.rinventory.app.AppController;
+import com.example.user.rinventory.data.Data;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class returActivity extends AppCompatActivity implements View.OnClickListener {
     private Button buttonScan,btnRetur;
     ProgressDialog pDialog;
+    String b;
+    Spinner spinner_pendidikan,spNamen,tipe;
+    Adapter adapter;
+    List<Data> listPendidikan = new ArrayList<Data>();
     private EditText editText,namaText,lokText,katText,stokText,keteranganText;
 
     int success;
     ConnectivityManager conMgr;
     SharedPreferences sharedpreferences;
+    public static final String TAG_ID = "id_supplier";
+    public static final String TAG_PENDIDIKAN = "nama_supplier";
+    public static final String urlx = "http://rinventory.online/Android/supplier.php";
     public final static String TAG_LOKASI = "tmp_simpanbarang";
     public final static String TAG_KATEGORI = "nama_kategori";
     String url = "http://rinventory.online/Android/returData.php";
@@ -62,6 +78,29 @@ public class returActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retur);
+
+        //-------------------spinner----------------------------
+        spinner_pendidikan = (Spinner) findViewById(R.id.spinner);
+        spNamen = (Spinner) findViewById(R.id.spinner);
+        spinner_pendidikan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // TODO Auto-generated method stub
+                b = listPendidikan.get(position).getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+        adapter = new Adapter(returActivity.this, listPendidikan);
+        spinner_pendidikan.setAdapter(adapter);
+        callData();
+
 
         //-----------------------Cek Koneksi Internet-----------------------------
         conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -264,6 +303,7 @@ public class returActivity extends AppCompatActivity implements View.OnClickList
                 params.put("email",email);
                 params.put(KEY_STOK,stok_retur);
                 params.put(KEY_KETERANGAN,keterangan_retur);
+                params.put(TAG_ID,b);
                 return params;
             }
 
@@ -326,6 +366,60 @@ public class returActivity extends AppCompatActivity implements View.OnClickList
 
         // menampilkan alert dialog
         alertDialog.show();
+    }
+
+    //--------------------------------Spinner from DB---------------------------
+    private void callData() {
+        listPendidikan.clear();
+
+        pDialog = new ProgressDialog(returActivity.this);
+        pDialog.setCancelable(false);
+        pDialog.setMessage("Loading...");
+        showDialog();
+
+        // Creating volley request obj
+        JsonArrayRequest jArr = new JsonArrayRequest(urlx,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.e(TAG, response.toString());
+
+                        // Parsing json
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject obj = response.getJSONObject(i);
+
+                                Data item = new Data();
+
+                                item.setId(obj.getString(TAG_ID));
+                                item.setPendidikan(obj.getString(TAG_PENDIDIKAN));
+
+                                listPendidikan.add(item);
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        // notifying list adapter about data changes
+                        // so that it renders the list view with updated data
+                        adapter.notifyDataSetChanged();
+
+                        hideDialog();
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e(TAG, "Error: " + error.getMessage());
+                Toast.makeText(returActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                hideDialog();
+            }
+        });
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jArr, tag_json_obj);
     }
 
     private void showDialog() {

@@ -130,6 +130,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Stok keluar"
+        android:background="@drawable/border_style"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
