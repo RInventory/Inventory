@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,6 +33,7 @@ import java.util.Map;
 
 public class detailbarang extends AppCompatActivity {
     ProgressDialog pDialog;
+    SwipeRefreshLayout swLayout;
     private TextView kodeText,namaText,lokText,katText,stokText;
     ImageView gambar;
     public static final String TAG_ID_BARANG = "id_barang";
@@ -46,6 +49,30 @@ public class detailbarang extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailbarang);
+        swLayout = (SwipeRefreshLayout) findViewById(R.id.swlayout);
+
+        // Mengeset properti warna yang berputar pada SwipeRefreshLayout
+        swLayout.setColorSchemeResources(R.color.colorAccent,R.color.colorPrimary);
+
+        // Mengeset listener yang akan dijalankan saat layar di refresh/swipe
+        swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                // Handler untuk menjalankan jeda selama 5 detik
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+
+                        // Berhenti berputar/refreshing
+                        swLayout.setRefreshing(false);
+
+                        // fungsi-fungsi lain yang dijalankan saat refresh berhenti
+                        callVolley();
+
+                    }
+                }, 1000);
+            }
+        });
 
         kodeText = (TextView) findViewById(R.id.kodeBarang);
         namaText = (TextView) findViewById(R.id.namaBarang);

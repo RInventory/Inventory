@@ -42,7 +42,6 @@ public class reportActivity extends AppCompatActivity implements View.OnClickLis
     private Button go;
     String a,b,c;
     String a1,a2;
-    LinearLayout llayout;
     SwipeRefreshLayout swLayout;
     Spinner spinner_pendidikan,spNamen,tipe;
     ProgressDialog pDialog;
@@ -66,8 +65,6 @@ public class reportActivity extends AppCompatActivity implements View.OnClickLis
 
         swLayout = (SwipeRefreshLayout) findViewById(R.id.swlayout);
 
-        llayout = (LinearLayout) findViewById(R.id.ll_swiperefresh);
-
         // Mengeset properti warna yang berputar pada SwipeRefreshLayout
         swLayout.setColorSchemeResources(R.color.colorAccent,R.color.colorPrimary);
 
@@ -87,7 +84,7 @@ public class reportActivity extends AppCompatActivity implements View.OnClickLis
                         callData();
 
                     }
-                }, 5000);
+                }, 1000);
             }
         });
 

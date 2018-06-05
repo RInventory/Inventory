@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -44,6 +45,7 @@ public class report2Activity extends AppCompatActivity implements AdapterView.On
     private String JSON_STRING;
     private ListView listView;
     ImageView icon;
+    SwipeRefreshLayout swLayout;
     String gambar;
     public static final String TAG_JSON_ARRAY = "result";
     public static final String TAG_ID_KATEGORI = "id_kategori";
@@ -70,6 +72,39 @@ public class report2Activity extends AppCompatActivity implements AdapterView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report2);
+
+        swLayout = (SwipeRefreshLayout) findViewById(R.id.swlayout);
+
+        // Mengeset properti warna yang berputar pada SwipeRefreshLayout
+        swLayout.setColorSchemeResources(R.color.colorAccent,R.color.colorPrimary);
+
+        // Mengeset listener yang akan dijalankan saat layar di refresh/swipe
+        swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                // Handler untuk menjalankan jeda selama 5 detik
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+
+                        // Berhenti berputar/refreshing
+                        swLayout.setRefreshing(false);
+
+                        String masuk = getIntent().getExtras().getString(TAG_TIPE);
+                        // fungsi-fungsi lain yang dijalankan saat refresh berhenti
+                        if (masuk.equals("masuk")){
+                            getJSON();
+                        }else if(masuk.equals("keluar")){
+                            getJSON2();
+                        }else {
+                            getJSON3();
+                        }
+
+
+                    }
+                }, 1000);
+            }
+        });
 
         icon = (ImageView) findViewById(R.id.icon);
         listView = (ListView) findViewById(R.id.simpleListView);

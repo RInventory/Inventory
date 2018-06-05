@@ -9,6 +9,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,6 +54,7 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
     private Button buttonScan,btnTambah;
     ImageView gambar;
     ProgressDialog pDialog;
+    SwipeRefreshLayout swLayout;
     private EditText editText,namaText,lokText,katText,stokText;
     Spinner spinner_pendidikan,spNamen,tipe;
     Adapter adapter;
@@ -86,6 +89,30 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in);
+        swLayout = (SwipeRefreshLayout) findViewById(R.id.swlayout);
+
+        // Mengeset properti warna yang berputar pada SwipeRefreshLayout
+        swLayout.setColorSchemeResources(R.color.colorAccent,R.color.colorPrimary);
+
+        // Mengeset listener yang akan dijalankan saat layar di refresh/swipe
+        swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                // Handler untuk menjalankan jeda selama 5 detik
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+
+                        // Berhenti berputar/refreshing
+                        swLayout.setRefreshing(false);
+
+                        // fungsi-fungsi lain yang dijalankan saat refresh berhenti
+                        callData();
+
+                    }
+                }, 1000);
+            }
+        });
 
         //-------------------spinner----------------------------
         spinner_pendidikan = (Spinner) findViewById(R.id.spinner);
@@ -256,9 +283,7 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(INActivity.this, "Maaf muat ulang kembali", Toast.LENGTH_LONG).show();
                 hideDialog();
 
             }

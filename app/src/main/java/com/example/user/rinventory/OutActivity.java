@@ -161,21 +161,21 @@ public class OutActivity extends AppCompatActivity implements View.OnClickListen
             finish();
             startActivity(iHome);
         } else if (item.getItemId() == R.id.in) {
-            Intent iIN = new Intent(getApplicationContext(),INActivity.class);
+            Intent iHome = new Intent(getApplicationContext(),INActivity.class);
             finish();
-            startActivity(iIN);
+            startActivity(iHome);
         } else if (item.getItemId() == R.id.inven) {
-            Intent iInven = new Intent(getApplicationContext(),Inventory.class);
+            Intent iHome = new Intent(getApplicationContext(),Inventory.class);
             finish();
-            startActivity(iInven);
+            startActivity(iHome);
         } else if (item.getItemId() == R.id.retur) {
-            Intent iRetur = new Intent(getApplicationContext(),returActivity.class);
+            Intent iHome = new Intent(getApplicationContext(),returActivity.class);
             finish();
-            startActivity(iRetur);
+            startActivity(iHome);
         } else if (item.getItemId() == R.id.report) {
-            Intent iReport = new Intent(getApplicationContext(),reportActivity.class);
+            Intent iHome = new Intent(getApplicationContext(),reportActivity.class);
             finish();
-            startActivity(iReport);
+            startActivity(iHome);
         }
 
         return true;
@@ -214,9 +214,7 @@ public class OutActivity extends AppCompatActivity implements View.OnClickListen
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(OutActivity.this, "Maaf muat ulang kembali", Toast.LENGTH_LONG).show();
                 hideDialog();
 
             }
