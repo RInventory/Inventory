@@ -45,7 +45,9 @@ public class loginActivity extends AppCompatActivity {
 
         sharedpref=getSharedPreferences("shared", Context.MODE_PRIVATE);
         if (sharedpref.contains("email")){
-            startActivity(new Intent(getApplicationContext(), menuActivity.class));
+            Intent iMenu = new Intent(getApplicationContext(),menuActivity.class);
+            finish();
+            startActivity(iMenu);
         }
         LoginEmail = (EditText) findViewById(R.id.editText);
         LoginPass = (EditText) findViewById(R.id.editText4);

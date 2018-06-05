@@ -54,7 +54,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="10dp"
-                    android:text="IN"
+                    android:text="Barang Masuk"
                     android:textStyle="bold"/>
 
             </RelativeLayout>
@@ -77,7 +77,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="10dp"
-                    android:text="OUT"
+                    android:text="Barang Keluar"
                     android:textStyle="bold"/>
 
             </RelativeLayout>
@@ -104,7 +104,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="10dp"
-                    android:text="Invent"
+                    android:text="Inventori"
                     android:textStyle="bold" />
 
             </RelativeLayout>
@@ -136,7 +136,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="10dp"
-                    android:text="Report"
+                    android:text="Laporan"
                     android:textStyle="bold"/>
 
             </RelativeLayout>
@@ -159,7 +159,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="10dp"
-                    android:text="Retur"
+                    android:text="Barang Retur"
                     android:textStyle="bold"/>
 
             </RelativeLayout>
@@ -182,7 +182,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="10dp"
-                    android:text="Logout"
+                    android:text="Keluar"
                     android:textStyle="bold"/>
 
             </RelativeLayout>

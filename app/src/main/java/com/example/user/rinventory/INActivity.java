@@ -199,13 +199,25 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
             finish();
             startActivity(iHome);
         } else if (item.getItemId() == R.id.in) {
-            startActivity(new Intent(getApplicationContext(), INActivity.class));
+            Intent iIN = new Intent(getApplicationContext(),INActivity.class);
+            finish();
+            startActivity(iIN);
+        }else if (item.getItemId() == R.id.out) {
+            Intent iOUT = new Intent(getApplicationContext(),OutActivity.class);
+            finish();
+            startActivity(iOUT);
         } else if (item.getItemId() == R.id.inven) {
-            startActivity(new Intent(getApplicationContext(), Inventory.class));
+            Intent iInven = new Intent(getApplicationContext(),Inventory.class);
+            finish();
+            startActivity(iInven);
         } else if (item.getItemId() == R.id.retur) {
-            startActivity(new Intent(getApplicationContext(), returActivity.class));
+            Intent iRetur = new Intent(getApplicationContext(),returActivity.class);
+            finish();
+            startActivity(iRetur);
         } else if (item.getItemId() == R.id.report) {
-            startActivity(new Intent(getApplicationContext(), reportActivity.class));
+            Intent iReport = new Intent(getApplicationContext(),reportActivity.class);
+            finish();
+            startActivity(iReport);
         }
 
         return true;
@@ -299,9 +311,7 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(INActivity.this, "Maaf muat ulang kembali", Toast.LENGTH_LONG).show();
 
             }
         }){
@@ -457,8 +467,7 @@ public class INActivity extends AppCompatActivity implements View.OnClickListene
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                VolleyLog.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(INActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(INActivity.this, "Maaf muat ulang kembali", Toast.LENGTH_LONG).show();
                 hideDialog();
             }
         });

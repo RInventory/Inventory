@@ -2,6 +2,7 @@ package com.example.user.rinventory;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,9 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Handler;
+
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -38,6 +42,8 @@ public class reportActivity extends AppCompatActivity implements View.OnClickLis
     private Button go;
     String a,b,c;
     String a1,a2;
+    LinearLayout llayout;
+    SwipeRefreshLayout swLayout;
     Spinner spinner_pendidikan,spNamen,tipe;
     ProgressDialog pDialog;
     Adapter adapter;
@@ -53,11 +59,37 @@ public class reportActivity extends AppCompatActivity implements View.OnClickLis
     public static final String TAG_TIPE = "tipe";
     public static final String TAG_PENDIDIKAN = "nama_kategori";
     String tag_json_obj = "json_obj_req";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+
+        swLayout = (SwipeRefreshLayout) findViewById(R.id.swlayout);
+
+        llayout = (LinearLayout) findViewById(R.id.ll_swiperefresh);
+
+        // Mengeset properti warna yang berputar pada SwipeRefreshLayout
+        swLayout.setColorSchemeResources(R.color.colorAccent,R.color.colorPrimary);
+
+        // Mengeset listener yang akan dijalankan saat layar di refresh/swipe
+        swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                // Handler untuk menjalankan jeda selama 5 detik
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+
+                        // Berhenti berputar/refreshing
+                        swLayout.setRefreshing(false);
+
+                        // fungsi-fungsi lain yang dijalankan saat refresh berhenti
+                        callData();
+
+                    }
+                }, 5000);
+            }
+        });
 
         spinner_pendidikan = (Spinner) findViewById(R.id.spinner_pendidikan);
         spNamen = (Spinner) findViewById(R.id.spinner);
@@ -103,13 +135,21 @@ public class reportActivity extends AppCompatActivity implements View.OnClickLis
             finish();
             startActivity(iHome);
         } else if (item.getItemId() == R.id.in) {
-            startActivity(new Intent(getApplicationContext(), INActivity.class));
+            Intent iIN = new Intent(getApplicationContext(),INActivity.class);
+            finish();
+            startActivity(iIN);
         } else if (item.getItemId() == R.id.out) {
-            startActivity(new Intent(getApplicationContext(), OutActivity.class));
+            Intent iOUT = new Intent(getApplicationContext(),OutActivity.class);
+            finish();
+            startActivity(iOUT);
         } else if (item.getItemId() == R.id.inven) {
-            startActivity(new Intent(getApplicationContext(), Inventory.class));
+            Intent iInven = new Intent(getApplicationContext(),Inventory.class);
+            finish();
+            startActivity(iInven);
         } else if (item.getItemId() == R.id.retur) {
-            startActivity(new Intent(getApplicationContext(), returActivity.class));
+            Intent iRetur = new Intent(getApplicationContext(),returActivity.class);
+            finish();
+            startActivity(iRetur);
         }
         return true;
     }
@@ -156,8 +196,7 @@ public class reportActivity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                VolleyLog.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(reportActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(reportActivity.this, "Maaf muat ulang kembali", Toast.LENGTH_LONG).show();
                 hideDialog();
             }
         });

@@ -66,15 +66,25 @@ public class Inventory extends AppCompatActivity implements AdapterView.OnItemCl
             finish();
             startActivity(iHome);
         } else if (item.getItemId() == R.id.in) {
-            startActivity(new Intent(getApplicationContext(), INActivity.class));
+            Intent iIN = new Intent(getApplicationContext(),INActivity.class);
+            finish();
+            startActivity(iIN);
         } else if (item.getItemId() == R.id.out) {
-            startActivity(new Intent(getApplicationContext(), OutActivity.class));
+            Intent iOUT = new Intent(getApplicationContext(),OutActivity.class);
+            finish();
+            startActivity(iOUT);
         } else if (item.getItemId() == R.id.inven) {
-            startActivity(new Intent(getApplicationContext(), Inventory.class));
+            Intent iInven = new Intent(getApplicationContext(),Inventory.class);
+            finish();
+            startActivity(iInven);
         } else if (item.getItemId() == R.id.retur) {
-            startActivity(new Intent(getApplicationContext(), returActivity.class));
+            Intent iRetur = new Intent(getApplicationContext(),returActivity.class);
+            finish();
+            startActivity(iRetur);
         } else if (item.getItemId() == R.id.report) {
-            startActivity(new Intent(getApplicationContext(), reportActivity.class));
+            Intent iReport = new Intent(getApplicationContext(),reportActivity.class);
+            finish();
+            startActivity(iReport);
         }
 
         return true;

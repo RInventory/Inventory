@@ -25,15 +25,15 @@
         </activity>
         <activity
             android:name=".Inventory"
-            android:label="Inventory"
+            android:label="Inventori"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".OutActivity"
-            android:label="OUT"
+            android:label="Barang Keluar"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ListBarang"
-            android:label="List Barang"
+            android:label="Daftar Barang"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".detailbarang"
@@ -44,7 +44,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".INActivity"
-            android:label="IN"
+            android:label="Barang Masuk"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".loginActivity"
@@ -52,15 +52,15 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".reportActivity"
-            android:label="Report"
+            android:label="Laporan"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".returActivity"
-            android:label="Retur"
+            android:label="Barang Retur"
             android:screenOrientation="portrait"/>
         <activity 
             android:name=".report2Activity"
-            android:label="Report"
+            android:label="Detail Laporan"
             android:screenOrientation="portrait"/>
     </application>
 

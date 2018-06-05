@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -96,15 +99,25 @@ public class report2Activity extends AppCompatActivity implements AdapterView.On
             finish();
             startActivity(iHome);
         } else if (item.getItemId() == R.id.in) {
-            startActivity(new Intent(getApplicationContext(), INActivity.class));
+            Intent iIN = new Intent(getApplicationContext(),INActivity.class);
+            finish();
+            startActivity(iIN);
         } else if (item.getItemId() == R.id.out) {
-            startActivity(new Intent(getApplicationContext(), OutActivity.class));
+            Intent iOUT = new Intent(getApplicationContext(),OutActivity.class);
+            finish();
+            startActivity(iOUT);
         } else if (item.getItemId() == R.id.inven) {
-            startActivity(new Intent(getApplicationContext(), Inventory.class));
+            Intent iInven = new Intent(getApplicationContext(),Inventory.class);
+            finish();
+            startActivity(iInven);
         } else if (item.getItemId() == R.id.retur) {
-            startActivity(new Intent(getApplicationContext(), returActivity.class));
+            Intent iRetur = new Intent(getApplicationContext(),returActivity.class);
+            finish();
+            startActivity(iRetur);
         } else if (item.getItemId() == R.id.report) {
-            startActivity(new Intent(getApplicationContext(), reportActivity.class));
+            Intent iReport = new Intent(getApplicationContext(),reportActivity.class);
+            finish();
+            startActivity(iReport);
         }
 
         return true;
@@ -164,8 +177,7 @@ public class report2Activity extends AppCompatActivity implements AdapterView.On
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(report2Activity.this, "Maaf muat ulang kembali", Toast.LENGTH_LONG).show();
 
             }
         }){

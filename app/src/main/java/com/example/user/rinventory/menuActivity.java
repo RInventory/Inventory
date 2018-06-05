@@ -29,7 +29,7 @@ public class menuActivity extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences("shared", Context.MODE_PRIVATE);
         final String username = sharedpreferences.getString("email", null);
-        setTitle("hi, "+username+"!");
+        setTitle("hai, "+username+"!");
 
 
         conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -144,15 +144,25 @@ public class menuActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.in){
-            startActivity(new Intent(getApplicationContext(), INActivity.class));
+            Intent iIN = new Intent(getApplicationContext(),INActivity.class);
+            finish();
+            startActivity(iIN);
         } else if (item.getItemId() == R.id.out) {
-            startActivity(new Intent(getApplicationContext(), OutActivity.class));
+            Intent iOUT = new Intent(getApplicationContext(),OutActivity.class);
+            finish();
+            startActivity(iOUT);
         } else if (item.getItemId() == R.id.inven) {
-            startActivity(new Intent(getApplicationContext(), Inventory.class));
+            Intent iInven = new Intent(getApplicationContext(),Inventory.class);
+            finish();
+            startActivity(iInven);
         } else if (item.getItemId() == R.id.retur) {
-            startActivity(new Intent(getApplicationContext(), returActivity.class));
+            Intent iRetur = new Intent(getApplicationContext(),returActivity.class);
+            finish();
+            startActivity(iRetur);
         } else if (item.getItemId() == R.id.report) {
-            startActivity(new Intent(getApplicationContext(), reportActivity.class));
+            Intent iReport = new Intent(getApplicationContext(),reportActivity.class);
+            finish();
+            startActivity(iReport);
         }
 
         return true;
@@ -163,7 +173,7 @@ public class menuActivity extends AppCompatActivity {
                 this);
 
         // set title dialog
-        alertDialogBuilder.setTitle("Apakah anda yakin ingin logout?");
+        alertDialogBuilder.setTitle("Apakah anda yakin ingin keluar?");
 
         // set pesan dari dialog
         alertDialogBuilder

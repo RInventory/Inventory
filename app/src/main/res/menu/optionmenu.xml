@@ -3,32 +3,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
         android:id="@+id/home"
-        android:title="Home"
+        android:title="Beranda"
         app:showAsAction="never">
     </item>
     <item
         android:id="@+id/in"
-        android:title="IN"
+        android:title="Barang Masuk"
         app:showAsAction="never">
     </item>
     <item
         android:id="@+id/out"
-        android:title="OUT"
+        android:title="Barang Keluar"
         app:showAsAction="never">
     </item>
     <item
         android:id="@+id/retur"
-        android:title="Retur"
+        android:title="Barang Retur"
         app:showAsAction="never">
     </item>
     <item
         android:id="@+id/inven"
-        android:title="Inventory"
+        android:title="Inventori"
         app:showAsAction="never">
     </item>
     <item
         android:id="@+id/report"
-        android:title="Report"
+        android:title="Laporan"
         app:showAsAction="never">
     </item>
 </menu>
