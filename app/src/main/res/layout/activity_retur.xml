@@ -95,8 +95,6 @@
                 android:layout_height="35dp"
                 android:layout_alignBaseline="@+id/editText11"
                 android:layout_alignBottom="@+id/editText11"
-                android:layout_marginLeft="14dp"
-                android:layout_marginStart="14dp"
                 android:layout_toEndOf="@+id/editText11"
                 android:layout_toRightOf="@+id/editText11"
                 android:text="*Supplier  "
@@ -110,7 +108,7 @@
 
             <Spinner
                 android:id="@+id/spinner"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/textView9"
@@ -221,7 +219,7 @@
 
                 <EditText
                     android:id="@+id/kerusakanText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="60dp"
                     android:layout_alignParentTop="true"
                     android:layout_marginEnd="20dp"
